@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluate Responses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h3>Prompt:</h3>
+    <p>{{ prompt }}</p>
+
+    <form method="POST" action="/submit/">
+        {% csrf_token %}
+
+        <h5>Response 1:</h5>
+        <p>{{ response1 }}</p>
+
+        <h5>Response 2:</h5>
+        <p>{{ response2 }}</p>
+
+        <input type="hidden" name="prompt" value="{{ prompt }}">
+        <input type="hidden" name="response1" value="{{ response1 }}">
+        <input type="hidden" name="response2" value="{{ response2 }}">
+
+        <label style="color: #2883a7;">Accuracy:</label>
+        <input type="number" name="accuracy" class="form-control" min="1" max="5" required>
+
+        <label style="color: #2883a7;">Relevance:</label>
+        <input type="number" name="relevance" class="form-control" min="1" max="5" required>
+
+        <label style="color: #2883a7;">Coherence:</label>
+        <input type="number" name="coherence" class="form-control" min="1" max="5" required>
+
+        <button type="submit" class="btn btn-primary mt-3" style="background-color: #a7282a; border-color: #a72898;">
+            Submit Evaluation
+        </button>
+    </form>
+
+</div>
+
+</body>
+</html>
